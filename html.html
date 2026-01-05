@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Галина Савова – Портфолио</title>
+  <style>
+    :root {
+      --bg: #F4E9D8;
+      --card: #ffffff;
+      --accent: #e0c7a8;
+      --accent-dark: #c89b6d;
+      --text-main: #333333;
+      --text-soft: #666666;
+      --shadow-soft: 0 16px 40px rgba(0,0,0,0.08);
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      position: relative;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      background-image: none;
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ВИСОКАТА ИЛЮСТРАЦИЯ – ръка + конци + кукла */
+    .marionette-column-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .marionette-column-image {
+      display: block;
+      width: min(380px, 75vw);
+      height: auto;
+      min-height: 130vh;
+    }
+
+    /* всичко съдържание е над илюстрацията */
+    header,
+    section,
+    .nav,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(244,233,216,0.96), rgba(244,233,216,0.9));
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .nav-photo-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-dark);
+      background: rgba(255,255,255,0.9);
+    }
+
+    .nav-name {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent-dark);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .accordion {
+  margin-top: 20px;
+}
+
+.accordion-item {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffffcc;
+  box-shadow: var(--shadow-soft);
+}
+
+.accordion-title {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 17px;
+  text-align: left;
+  background: #f3e6d5;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  transition: max-height 0.35s ease;
+  padding: 0 20px;
+}
+
+.accordion-content ul {
+  padding: 16px 0;
+  list-style: none;
+}
+
+.accordion-content li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+
+    .hero {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(32px, 4vw, 44px);
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.9);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .hero-highlight {
+      background: rgba(224,199,168,0.16);
+      padding: 14px 16px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-dark), #f0b27a);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(200,155,109,0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.9);
+      color: var(--text-main);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--radius-xl);
+      padding: 22px 22px 18px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .hero-card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .hero-card-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .hero-card-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(250,247,242,0.9);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .hero-photo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      padding: 8px;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.16);
+      backdrop-filter: blur(4px);
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 10px;
+    }
+
+    .section-inner {
+      background: rgba(255,255,255,0.94);
+      border-radius: var(--radius-xl);
+      padding: 28px 26px 26px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .split-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 800px) {
+      .split-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .text-block p {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .list,
+    .list-compact {
+      list-style: none;
+    }
+
+    .list li {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .list-compact li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .badge-year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(224,199,168,0.18);
+      margin-right: 8px;
+    }
+    /* Награди – картов изглед */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.award-card {
+  position: relative;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #ffe9c8, #f9f0e3);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.award-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.25);
+  opacity: 0.8;
+}
+
+.award-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+}
+
+.award-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.85);
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.award-icon {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  font-size: 24px;
+}
+
+.award-title {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.award-subtitle {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+
+.award-text {
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+/* VIDEO SLIDER */
+.video-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  background: #000;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+.video-slider-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.video-slide {
+  flex: 0 0 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.video-frame iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+
+.video-caption {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #ddd;
+}
+
+/* Buttons */
+.video-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+#videoPrev { left: 14px; }
+#videoNext { right: 14px; }
+
+/* Dots */
+.video-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.video-dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.video-dot.active {
+  width: 22px;
+  background: #fff;
+}
+
+
+
+    .qr-box {
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      background: repeating-linear-gradient(45deg, #f4ede4, #f4ede4 6px, #e9ddcf 6px, #e9ddcf 12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-soft);
+      align-self: center;
+      text-align: center;
+      padding: 6px;
+    }
+    .qr-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      object-fit: contain;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      align-self: center;
+    }
+    .qr-link {
+  text-decoration: none;
+  color: inherit;
+  align-self: center;
+}
+
+/* за да работи hover ефектът когато мишката е върху линка */
+.qr-link:hover .qr-poster {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.26);
+  filter: brightness(1.15);
+}
+
+
+    .video-card-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .video-card p {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    /* GALERY */
+    .gallery-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      background: #000;
+    }
+
+    .gallery-track {
+      display: flex;
+      will-change: transform;
+      transition: transform 0.6s ease;
+      width: 100%;
+    }
+
+    .gallery-slide {
+      flex: 0 0 100%;
+      height: 360px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .gallery-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .gallery-btn {
+      pointer-events: auto;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    .gallery-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .gallery-dot.active {
+      width: 18px;
+      background: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+      padding: 10px 20px 26px;
+    }
+
+    /* Reveal animation */
+    header, section {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    header.reveal, section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* --- QR кодове тип „театрален плакат“ --- */
+
+.qr-poster {
+  width: 140px;
+  padding: 12px;
+  background: #ffffffdd;
+  border-radius: 16px;
+  border: 2px solid #c9a77a;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+  text-align: center;
+  backdrop-filter: blur(2px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.qr-poster img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.qr-poster .qr-title {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5a4633;
+  letter-spacing: 0.4px;
+}
+
+/* Glow + прожектор при hover */
+.qr-poster:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.26);
+  filter: brightness(1.15);
+}
+
+/* Малка текстура за плакатен ефект */
+.qr-poster {
+  background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+}
+/* ---------- MOBILE FIXES ---------- */
+@media (max-width: 768px) {
+
+  /* NAV – прави менюто едноредово и компактно */
+  .nav-inner {
+    padding: 10px 14px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-left {
+    gap: 6px;
+  }
+
+  .nav-logo-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .nav-name {
+    font-size: 12px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  /* Хамбургер меню (ако искаш мога да го направя) */
+  /* за момента само уплътняваме */
+
+
+
+  /* HERO – по-малки текстове и повече въздух */
+  .hero {
+    padding: 20px 16px 40px;
+    gap: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-highlight {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .hero-meta {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  /* Фото – по-малко, за да не бута съдържанието */
+  .hero-photo-frame {
+    width: 200px;
+    height: 200px;
+    padding: 6px;
+  }
+
+  /* Marionette image – ОГРОМНО подобрение */
+  .marionette-column-wrapper {
+    opacity: 0.25;            /* по-леко, ненатрапчиво */
+    transform: translateX(-50%) scale(0.75);
+  }
+
+  .marionette-column-image {
+    min-height: 105vh;       /* намалена височина */
+    width: 260px;            /* по-тънка */
+  }
+
+
+  /* SECTIONS – по-добър баланс */
+  section {
+    padding: 30px 16px 0;
+  }
+
+  .section-inner {
+    padding: 22px 18px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  /* VIDEO CAROUSEL */
+  .video-frame iframe {
+    height: 210px !important; /* правилно съотношение на телефона */
+  }
+
+  .video-carousel {
+    margin-top: 12px;
+  }
+
+
+  /* BUTTONS */
+  .btn-primary,
+  .btn-ghost {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* GALLERY */
+  .gallery-slide {
+    height: 240px;
+  }
+
+  /* Awards cards */
+  .award-card {
+    padding: 14px 16px;
+  }
+
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Високата илюстрация на марионетката -->
+  <div class="marionette-column-wrapper">
+    <img src="images/marionette-column.png"
+         alt="Марионетка – ръка и кукла"
+         class="marionette-column-image">
+  </div>
+
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo-circle nav-photo-logo">
+  <img src="images/Logoimage.jpg" alt="Галина Савова">
+</div>
+
+        <div class="nav-name">ГАЛИНА САВОВА</div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">За мен</a>
+        <a href="#full-work">Спектакли</a>
+        <a href="#awards">Награди</a>
+        <a href="#video">Видео</a>
+        <a href="#gallery">Галерия</a>
+        <a href="#contact">Контакт</a>
+      </div>
+    </div>
+  </div>
+
+  <header id="about">
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-pill">Актриса • Куклен артист • Режисьор</div>
+        <h1>Аз съм Галина Савова.</h1>
+        <div class="hero-subtitle">Театър, кукли и кино – истории, които оживяват.</div>
+
+        <div class="hero-highlight">
+          Аз съм куклена актриса, режисьор и автор, за която изкуството е начин да се откриват тихи светове. 
+          Обичам да създавам истории чрез кукли и малки сценични детайли, така че публиката да се почувства част от тях.
+        </div>
+
+        <div class="hero-meta">
+          <span>Базирана в София, България</span>
+          <span>Над 25 години професионален опит</span>
+          <span>Театър, кино, фестивали, ателиета</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#work" class="btn-primary">Виж избрани спектакли</a>
+          <a href="#video" class="btn-ghost">Видео портфолио</a>
+        </div>
+      </div>
+
+      <aside class="hero-photo-wrapper">
+        <div class="hero-photo-frame">
+          <img src="images/Logoimage.jpg" alt="Галина Савова" class="hero-photo">
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="full-work">
+  <div class="section-inner">
+    <h2 class="section-title">Пълен творчески път</h2>
+    <p class="section-subtitle">Всички спектакли, роли, режисьорски работи и участия.</p>
+
+    
+      <!-- РЕЖИСЬОР -->
+      <div class="accordion-item">
+        <button class="accordion-title">🎬 Режисьорски спектакли</button>
+        <div class="accordion-content">
+          <ul>
+            <li>2022 — „Светлинка“, Столичен куклен театър</li>
+            <li>2022 — „Кой съм аз“, ДКТ Пловдив</li>
+            <li>2018 — „Трите прасенца“, Благоевград</li>
+            <li>2017 — „Ту тук, ту там“, Благоевград</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ТВ + ФИЛМ -->
+      <div class="accordion-item">
+        <button class="accordion-title">📺 Участия в телевизия и кино</button>
+        <div class="accordion-content">
+          <ul>
+            <li>„Улицата“ – Национална телевизия</li>
+            <li>„Лексикон“</li>
+            <li>„Събота, късен следобед“</li>
+            <li>„Лека нощ, деца“</li>
+            <li><strong>„Automata“ – кукловод във филма на Антонио Бандерас</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ПРОЕКТИ / АТЕЛИЕТА -->
+      <div class="accordion-item">
+        <button class="accordion-title">✨ Проекти, ателиета и курсове</button>
+        <div class="accordion-content">
+          <ul>
+            <li>Създател на „Пътуващо куклено ателие“</li>
+            <li>Създател на „Лятна куклено-театрална школа“</li>
+            <li>Организатор на „Панаир на куклите“</li>
+            <li>Работилници в СКТ – Ден на бащата, Ден на детето, Международен ден на кукления театър...</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+
+      <!-- АКТРИСА -->
+      <div class="accordion-item">
+        <button class="accordion-title">🎭 Актьорски спектакли</button>
+        <div class="accordion-content">
+          <ul>
+
+            <li><strong>Столичен куклен театър</strong> (1998 – настояще)
+              <ul>
+                <li>„Не спящата красавица“ – реж. П. Минова</li>
+                <li>„Карнавал на животните“ – реж. Н. Георгиева</li>
+                <li>„Картини от една изложба“ – реж. Н. Георгиева</li>
+                <li>„Приказка за коня“ – реж. Ж. Йокубич</li>
+                <li>„Тул-Тул“ – реж. М. Митева</li>
+                <li>„Питър Пан“ – реж. Б. Лунчев</li>
+                <li>„Маме“ – реж. Д. Цанков</li>
+                <li>„Любопитното слонче“ – реж. Т. Вълов</li>
+                <li>„Голям Крал“ – реж. А. Тачков</li>
+                <li>„Котаракът в чизми“ – реж. А. Тачков</li>
+                <li>„Приказна въртележка“ – реж. Венцислав Асенов</li>
+                <li>„Необикновен талант на Слънчо“ – реж. А. Тачков</li>
+                <li>„Приключенията на Буква“ – реж. Тодор Вълов</li>
+                <li>„Малчо“ – проф. Боньо Лунгов</li>
+                <li>„Вълкът и сянката му“ – реж. Дана Цанкова</li>
+                <li>„Питър Пан“ – реж. проф. Боньо Лунгов</li>
+                <li>„Развълнувана бука“ – реж. Атанас Илков</li>
+                <li>„Бебешка пиеса“ – Елица Лалева</li>
+                <li>„Неочакваната приказка“ – реж. Иван Райков</li>
+                <li>„Приказка за Попа и неговия слуга Глупан“ – реж. проф. Боньо Лунгов</li>
+                <li>„Цветни игри“ – реж. Катя Петрова</li>
+                <li>„Игра на въображението“ – реж. проф. Боньо Лунгов</li>
+                <li>„Рибарят и златната рибка“ – реж. Аделина Минчева</li>
+                <li>„Хензел и Гретел“ – реж. Съни Сънински</li>
+                <li>„Кофичка с опашка“ – реж. Елица Лалева</li>
+                <li>„Американски мюзикъл“ – реж. Майкъл Бараксива</li>
+              </ul>
+            </li>
+
+            <li><strong>Държавен куклен театър – Търговище</strong> (1996 – 1998)
+              <ul>
+                <li>„Палечка“ – реж. Т. Вълов</li>
+                <li>„Косе-Босе“ – реж. Т. Вълов</li>
+                <li>„Принцесата и свинарят“ – реж. Н. Поляков</li>
+                <li>„Метаморфози“ – реж. И. Събинов</li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+  <section id="awards">
+  <div class="section-inner">
+    <h2 class="section-title">Награди и признание</h2>
+    <p class="section-subtitle">
+      Част от срещите ми с публиката и професионалните журита през годините.
+    </p>
+
+    <div class="awards-grid">
+
+      <article class="award-card">
+        <div class="award-year">1998</div>
+        <div class="award-icon">🏆</div>
+        <h3 class="award-title">Награда „Куклар“</h3>
+        <p class="award-subtitle">За най-добра актриса</p>
+        <p class="award-text">
+          Отличие за ролята ми в спектакъла <strong>„Косе-Босе“</strong>
+          на Държавен куклен театър – Търговище.
+        </p>
+      </article>
+
+      <article class="award-card">
+        <div class="award-year">2000</div>
+        <div class="award-icon">✨</div>
+        <h3 class="award-title">„Икар“ – Съюз на артистите</h3>
+        <p class="award-subtitle">Награда за най-добро куклено представление</p>
+        <p class="award-text">
+          За спектакъла <strong>„Златка, златното момче“</strong>
+          в Столичен куклен театър.
+        </p>
+      </article>
+
+      <article class="award-card">
+        <div class="award-year">2010</div>
+        <div class="award-icon">⭐</div>
+        <h3 class="award-title">Номинация „Икар“</h3>
+        <p class="award-subtitle">Куклено изкуство</p>
+        <p class="award-text">
+          Номинация на Съюза на артистите в България за участието ми в
+          спектакъла <strong>„Питър Пан“</strong>.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="video">
+  <div class="section-inner">
+    <h2 class="section-title">Видео портфолио</h2>
+    <p class="section-subtitle">Видео откъси, репетиции, задкулисни моменти и сценична работа.</p>
+
+    <div class="video-slider-wrapper">
+      <div class="video-slider-track" id="videoTrack">
+
+        <!-- Видео 1 -->
+        <div class="video-slide">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/OZpHpeDBkxg"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+          <div class="video-caption">Фрагмент от сценична работа</div>
+        </div>
+
+        <!-- Видео 2 -->
+        <div class="video-slide">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/wrZZ8y9BANA"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+          <div class="video-caption">Кукловодна техника / репетиции</div>
+        </div>
+
+        <!-- Видео 3 (примерно) -->
+        <div class="video-slide">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/mnJu1nf2jzo"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+          <div class="video-caption">Работа с публика</div>
+        </div>
+
+      </div>
+
+      <button class="video-btn" id="videoPrev">‹</button>
+      <button class="video-btn" id="videoNext">›</button>
+
+      <div class="video-dots" id="videoDots"></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <section id="gallery">
+    <div class="section-inner">
+      <h2 class="section-title">Галерия</h2>
+      <p class="section-subtitle">Снимки от спектактли, в които участвам.</p>
+
+      <div class="gallery-wrapper">
+        <div class="gallery-track" id="galleryTrack">
+
+          <div class="gallery-slide"
+               style="background-image:url('images/image01.jpg');">
+            <div class="gallery-overlay"></div>
+            <div class="gallery-caption">"Кофичка с лопатка"</div>
+          </div>
+
+          <div class="gallery-slide"
+               style="background-image:url('images/image02.jpg');">
+            <div class="gallery-overlay"></div>
+            <div class="gallery-caption">"Любопитното слонче"</div>
+          </div>
+
+          <div class="gallery-slide"
+               style="background-image:url('images/image03.jpg');">
+            <div class="gallery-overlay"></div>
+            <div class="gallery-caption">"Ние, врабчетата"</div>
+          </div>
+
+          <div class="gallery-slide"
+               style="background-image:url('images/image04.JPG');">
+            <div class="gallery-overlay"></div>
+            <div class="gallery-caption">"Точка"</div>
+          </div>
+
+          <div class="gallery-slide"
+               style="background-image:url('images/image05.jpg');">
+            <div class="gallery-overlay"></div>
+            <div class="gallery-caption">"Златка златното момиче"</div>
+          </div>
+
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-btn" id="prevBtn" aria-label="Предишна снимка">‹</button>
+          <button class="gallery-btn" id="nextBtn" aria-label="Следваща снимка">›</button>
+        </div>
+
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner split-two">
+      <div class="text-block">
+        <h2 class="section-title">Контакт</h2>
+        <p class="section-subtitle">За театрални проекти, фестивали, уъркшопи и партньорства.</p>
+        <p>Отворена съм за участие в нови спектакли, фестивални програми, обучения за деца и възрастни, както и съвместни проекти между театър, визуални изкуства и социални каузи.</p>
+      </div>
+      <div>
+        <ul class="list-compact">
+          <li><strong>E-mail:</strong> galina.savova.art@gmail.com</li>
+          <li><strong>Телефон:</strong> +359 878 734 638</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Галина Савова – Портфолио
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('header, section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // Simple gallery slider
+    const track = document.getElementById('galleryTrack');
+    const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+    const dotsContainer = document.getElementById('galleryDots');
+    let currentIndex = 0;
+
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = 'gallery-dot' + (index === currentIndex ? ' active' : '');
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function updateSlider() {
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+      const dots = dotsContainer.querySelectorAll('.gallery-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlider();
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlider();
+    });
+
+    renderDots();
+    updateSlider();
+    // VIDEO SLIDER
+const videoTrack = document.getElementById("videoTrack");
+const videoSlides = Array.from(document.querySelectorAll(".video-slide"));
+const videoDots = document.getElementById("videoDots");
+
+let videoIndex = 0;
+
+function renderVideoDots() {
+  videoDots.innerHTML = "";
+  videoSlides.forEach((_, i) => {
+    const dot = document.createElement("div");
+    dot.className = "video-dot" + (i === videoIndex ? " active" : "");
+    dot.addEventListener("click", () => {
+      videoIndex = i;
+      updateVideoSlider();
+    });
+    videoDots.appendChild(dot);
+  });
+}
+
+function updateVideoSlider() {
+  videoTrack.style.transform = `translateX(-${videoIndex * 100}%)`;
+  document.querySelectorAll(".video-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === videoIndex);
+  });
+}
+
+document.getElementById("videoPrev").addEventListener("click", () => {
+  videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
+  updateVideoSlider();
+});
+
+document.getElementById("videoNext").addEventListener("click", () => {
+  videoIndex = (videoIndex + 1) % videoSlides.length;
+  updateVideoSlider();
+});
+
+renderVideoDots();
+updateVideoSlider();
+
+    document.querySelectorAll('.accordion-title').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.nextElementSibling;
+    const isOpen = content.style.maxHeight;
+
+    document.querySelectorAll('.accordion-content').forEach(el => el.style.maxHeight = null);
+
+    content.style.maxHeight = isOpen ? null : content.scrollHeight + "px";
+  });
+});
+
+  </script>
+
+</body>
+</html>
+
+
